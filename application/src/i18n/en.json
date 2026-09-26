@@ -1,0 +1,78 @@
+{
+  "tabs": {
+    "home": "Home",
+    "reportHazard": "Report Hazard",
+    "assignedActions": "Assigned Actions",
+    "profile": "Profile"
+  },
+  "buttons": {
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "logOut": "Log Out",
+    "retry": "Retry",
+    "save": "Save",
+    "confirm": "Confirm",
+    "close": "Close",
+    "usePhoto": "Use Photo",
+    "retake": "Retake",
+    "remove": "Remove",
+    "upload": "Upload Document",
+    "takePhoto": "Take Photo"
+  },
+  "common": {
+    "loading": "Loading…",
+    "error": "Error",
+    "success": "Success",
+    "offline": "Offline",
+    "online": "Online",
+    "noData": "No data available.",
+    "appName": "MineOS"
+  },
+  "profile": {
+    "title": "Profile",
+    "appSettings": "APP SETTINGS",
+    "mineWorker": "Mine Worker",
+    "signOutTitle": "Sign Out",
+    "signOutMessage": "Are you sure you want to sign out?",
+    "languageToggle": "App Language",
+    "languageSubtitle": "Switch between English and Hindi"
+  },
+  "hazard": {
+    "title": "Quick Hazard Report",
+    "subtitle": "Report a safety hazard immediately. Your geo-tagged photo and location will be attached.",
+    "description": "Hazard Description",
+    "descriptionPlaceholder": "Describe the hazard, its location, and any immediate risks…",
+    "submitButton": "Submit Hazard Report",
+    "successTitle": "Hazard Report Submitted",
+    "successMessage": "Your geo-tagged incident is now in the shared portal case register for officer review and closure.",
+    "offlineAlert": "Saved offline. Will sync when connected."
+  },
+  "grievance": {
+    "title": "Report a Grievance",
+    "subtitle": "Submit a labor or safety grievance. Anonymous reports are protected.",
+    "category": "Category",
+    "categoryPlaceholder": "Select a category",
+    "description": "Description",
+    "descriptionPlaceholder": "Describe the grievance in detail…",
+    "anonymous": "Submit Anonymously",
+    "anonymousSubtitle": "Your identity will not be shared",
+    "submitButton": "Submit Grievance",
+    "successTitle": "Grievance Submitted",
+    "successMessage": "Your grievance has been recorded and will be reviewed by the relevant authority.",
+    "categories": {
+      "Safety": "Safety",
+      "Equipment": "Equipment",
+      "HR": "Human Resources"
+    }
+  },
+  "attendance": {
+    "title": "Attendance Check-In",
+    "checkIn": "Check In"
+  },
+  "offline": {
+    "savedTitle": "Saved Offline",
+    "savedMessage": "Saved offline. Will sync when connected.",
+    "syncedTitle": "Sync Complete",
+    "syncedMessage": "{{count}} pending report(s) have been submitted."
+  }
+}

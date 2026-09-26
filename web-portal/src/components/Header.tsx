@@ -1,0 +1,7 @@
+import { useAuth } from '../context/AuthContext'
+import { roleDetails } from '../data/mockUsers'
+
+export function Header({ title, onMenu }: { title: string; onMenu: () => void }) {
+  const { user } = useAuth(); if (!user) return null
+  return <header className="sticky top-0 z-20 flex h-[73px] items-center justify-between border-b border-slate-200 bg-white/95 px-4 backdrop-blur lg:px-8"><div className="flex items-center gap-3"><button onClick={onMenu} className="rounded-lg p-2 text-slate-600 hover:bg-slate-100 lg:hidden" aria-label="Open navigation">☰</button><div><p className="hidden text-xs font-medium uppercase tracking-[.12em] text-slate-500 sm:block">MINSOS / {roleDetails[user.role].label}</p><h1 className="text-lg font-bold text-slate-900">{title}</h1></div></div><div className="flex items-center gap-3"><button className="relative rounded-lg p-2 text-slate-600 hover:bg-slate-100" aria-label="Notifications"><span aria-hidden>♢</span><span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-red-500 ring-2 ring-white" /></button><div className="hidden border-l border-slate-200 pl-3 text-right sm:block"><p className="text-sm font-semibold text-slate-800">{user.name}</p><p className="text-xs text-slate-500">{roleDetails[user.role].label}</p></div><span className="flex h-9 w-9 items-center justify-center rounded-full bg-minsos-100 text-sm font-bold text-minsos-700">{user.name[0]}</span></div></header>
+}

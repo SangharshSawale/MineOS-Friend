@@ -8,7 +8,8 @@ export interface AuthenticatedRequest extends Request {
 }
 
 interface TokenPayload {
-  sub: string;
+  sub?: string;
+  id?: string;
   role: UserRole;
 }
 
@@ -21,7 +22,12 @@ export function authenticate(request: AuthenticatedRequest, response: Response, 
 
   try {
     const payload = jwt.verify(token, env.jwtSecret) as TokenPayload;
-    request.user = { id: payload.sub, role: payload.role };
+    const userId = payload.sub || payload.id;
+    if (!userId) {
+      response.status(401).json({ message: "Invalid token payload: missing subject" });
+      return;
+    }
+    request.user = { id: userId, role: payload.role };
     next();
   } catch {
     response.status(401).json({ message: "Invalid or expired token" });
