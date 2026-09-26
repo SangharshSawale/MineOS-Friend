@@ -6,6 +6,9 @@ module.exports = {
   orientation: 'portrait',
   userInterfaceStyle: 'light',
   assetBundlePatterns: ['**/*'],
+  plugins: [
+    'expo-localization',
+  ],
   ios: {
     supportsTablet: true,
   },

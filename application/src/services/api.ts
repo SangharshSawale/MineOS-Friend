@@ -2,6 +2,26 @@ import axios, { type AxiosError, type InternalAxiosRequestConfig } from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getToken } from './storage';
 
+/** Minimal event emitter for auth state changes (avoids circular imports). */
+type AuthEventName = 'unauthorized';
+type Listener = () => void;
+
+function createAuthEvents() {
+  const listeners = new Map<AuthEventName, Set<Listener>>();
+  return {
+    on(event: AuthEventName, cb: Listener) {
+      if (!listeners.has(event)) listeners.set(event, new Set());
+      listeners.get(event)!.add(cb);
+      return () => listeners.get(event)?.delete(cb);
+    },
+    emit(event: AuthEventName) {
+      listeners.get(event)?.forEach((cb) => cb());
+    },
+  };
+}
+
+export const authEvents = createAuthEvents();
+
 /** Gets the backend URL configured by Expo at bundle time. */
 function resolveApiBaseUrl(): string {
   const configuredUrl = process.env.EXPO_PUBLIC_API_URL?.trim();
@@ -110,6 +130,7 @@ api.interceptors.response.use(
 
     if (error.response?.status === 401) {
       await AsyncStorage.multiRemove(['minsos_token', 'minsos_user', 'minsos_selected_mine']);
+      authEvents.emit('unauthorized');
     }
     return Promise.reject(error);
   },

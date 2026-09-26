@@ -153,7 +153,7 @@ export default function StartInspectionScreen({ navigation }: Props) {
           {
             text: 'OK',
             onPress: () => {
-              navigation.getParent()?.navigate('Home');
+              navigation.getParent()?.navigate('HomeTab');
             },
           },
         ],

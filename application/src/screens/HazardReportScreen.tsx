@@ -42,7 +42,7 @@ export default function HazardReportScreen({ navigation }: Props) {
   const [submitting, setSubmitting] = useState(false);
 
   const goToTab = useCallback(
-    (tab: 'Home' | 'Profile') => {
+    (tab: 'HomeTab' | 'ProfileTab') => {
       navigation.getParent()?.navigate(tab);
     },
     [navigation],
@@ -53,7 +53,7 @@ export default function HazardReportScreen({ navigation }: Props) {
   useFocusEffect(
     useCallback(() => {
       const subscription = BackHandler.addEventListener('hardwareBackPress', () => {
-        goToTab('Home');
+        goToTab('HomeTab');
         return true;
       });
 
@@ -147,7 +147,7 @@ export default function HazardReportScreen({ navigation }: Props) {
       Alert.alert(
         'Hazard Report Submitted',
         'Your geo-tagged incident is now in the shared portal case register for officer review and closure.',
-        [{ text: 'OK', onPress: () => goToTab('Home') }],
+        [{ text: 'OK', onPress: () => goToTab('HomeTab') }],
       );
     } catch (err) {
       const message = axios.isAxiosError(err)

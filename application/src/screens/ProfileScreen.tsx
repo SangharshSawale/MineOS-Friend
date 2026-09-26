@@ -16,10 +16,11 @@ import { logout } from '../services/authService';
 import { getUser } from '../services/storage';
 import { getPendingCount } from '../services/offlineTaskService';
 import { getConnectionStatus, subscribeToNetwork } from '../services/networkService';
+import LanguageToggle from '../components/LanguageToggle';
 import colors from '../theme/colors';
 import type { ProfileStackParamList, RootStackParamList, User } from '../types';
 
-type Props = NativeStackScreenProps<ProfileStackParamList, 'Profile'>;
+type Props = NativeStackScreenProps<ProfileStackParamList, 'ProfileHome'>;
 
 type SettingItem = {
   id: string;
@@ -182,6 +183,12 @@ export default function ProfileScreen({ navigation }: Props) {
           ))}
         </View>
 
+        {/* Language Toggle — standalone card below the settings list */}
+        <View style={styles.languageSection}>
+          <Text style={styles.sectionTitle}>LANGUAGE</Text>
+          <LanguageToggle />
+        </View>
+
         <Pressable
           style={({ pressed }) => [styles.logoutButton, pressed && styles.logoutButtonPressed]}
           onPress={handleLogout}
@@ -234,6 +241,9 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     marginTop: 8,
     marginBottom: 12,
+  },
+  languageSection: {
+    marginTop: 24,
   },
   settingsList: {
     gap: 12,

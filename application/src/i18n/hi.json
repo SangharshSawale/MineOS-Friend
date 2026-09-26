@@ -1,0 +1,78 @@
+{
+  "tabs": {
+    "home": "होम",
+    "reportHazard": "खतरा रिपोर्ट",
+    "assignedActions": "असाइन किए कार्य",
+    "profile": "प्रोफ़ाइल"
+  },
+  "buttons": {
+    "submit": "जमा करें",
+    "cancel": "रद्द करें",
+    "logOut": "लॉग आउट",
+    "retry": "पुनः प्रयास",
+    "save": "सहेजें",
+    "confirm": "पुष्टि करें",
+    "close": "बंद करें",
+    "usePhoto": "फोटो उपयोग करें",
+    "retake": "दोबारा खींचें",
+    "remove": "हटाएं",
+    "upload": "दस्तावेज़ अपलोड करें",
+    "takePhoto": "फोटो खींचें"
+  },
+  "common": {
+    "loading": "लोड हो रहा है…",
+    "error": "त्रुटि",
+    "success": "सफलता",
+    "offline": "ऑफलाइन",
+    "online": "ऑनलाइन",
+    "noData": "कोई डेटा उपलब्ध नहीं।",
+    "appName": "MineOS"
+  },
+  "profile": {
+    "title": "प्रोफ़ाइल",
+    "appSettings": "ऐप सेटिंग्स",
+    "mineWorker": "खान मजदूर",
+    "signOutTitle": "साइन आउट",
+    "signOutMessage": "क्या आप वाकई साइन आउट करना चाहते हैं?",
+    "languageToggle": "ऐप भाषा",
+    "languageSubtitle": "अंग्रेजी और हिंदी के बीच स्विच करें"
+  },
+  "hazard": {
+    "title": "त्वरित खतरा रिपोर्ट",
+    "subtitle": "सुरक्षा खतरे की तुरंत रिपोर्ट करें। आपकी जियो-टैग की फोटो और स्थान संलग्न होगी।",
+    "description": "खतरे का विवरण",
+    "descriptionPlaceholder": "खतरे, उसके स्थान और किसी भी तत्काल जोखिम का वर्णन करें…",
+    "submitButton": "खतरा रिपोर्ट जमा करें",
+    "successTitle": "खतरा रिपोर्ट जमा हुई",
+    "successMessage": "आपकी जियो-टैग घटना अधिकारी की समीक्षा के लिए पोर्टल में दर्ज है।",
+    "offlineAlert": "ऑफलाइन सहेजा गया। कनेक्ट होने पर सिंक होगा।"
+  },
+  "grievance": {
+    "title": "शिकायत दर्ज करें",
+    "subtitle": "श्रम या सुरक्षा शिकायत दर्ज करें। गुमनाम रिपोर्ट सुरक्षित हैं।",
+    "category": "श्रेणी",
+    "categoryPlaceholder": "एक श्रेणी चुनें",
+    "description": "विवरण",
+    "descriptionPlaceholder": "शिकायत का विस्तार से वर्णन करें…",
+    "anonymous": "गुमनाम रूप से जमा करें",
+    "anonymousSubtitle": "आपकी पहचान साझा नहीं की जाएगी",
+    "submitButton": "शिकायत जमा करें",
+    "successTitle": "शिकायत जमा हुई",
+    "successMessage": "आपकी शिकायत दर्ज हो गई है और संबंधित अधिकारी द्वारा समीक्षा की जाएगी।",
+    "categories": {
+      "Safety": "सुरक्षा",
+      "Equipment": "उपकरण",
+      "HR": "मानव संसाधन"
+    }
+  },
+  "attendance": {
+    "title": "उपस्थिति चेक-इन",
+    "checkIn": "चेक इन करें"
+  },
+  "offline": {
+    "savedTitle": "ऑफलाइन सहेजा",
+    "savedMessage": "ऑफलाइन सहेजा गया। कनेक्ट होने पर सिंक होगा।",
+    "syncedTitle": "सिंक पूर्ण",
+    "syncedMessage": "{{count}} लंबित रिपोर्ट जमा की गई।"
+  }
+}

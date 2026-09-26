@@ -181,10 +181,10 @@ export type RootStackParamList = {
 };
 
 export type MainTabParamList = {
-  Home: undefined;
+  HomeTab: undefined;
   Reels: undefined;
   Messages: undefined;
-  Profile: undefined;
+  ProfileTab: undefined;
 };
 
 export type HomeStackParamList = {
@@ -208,6 +208,6 @@ export type MessagesStackParamList = {
 };
 
 export type ProfileStackParamList = {
-  Profile: undefined;
+  ProfileHome: undefined;
   AttendanceCheckIn: undefined;
 };

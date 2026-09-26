@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ActivityIndicator, Pressable, StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
@@ -14,6 +15,7 @@ import AttendanceCheckInScreen from '../screens/AttendanceCheckInScreen';
 import AssignedActionsScreen from '../screens/AssignedActionsScreen';
 import TaskDetailScreen from '../screens/TaskDetailScreen';
 import { hasValidSession } from '../services/storage';
+import { authEvents } from '../services/api';
 import colors from '../theme/colors';
 import type {
   HomeStackParamList,
@@ -69,7 +71,7 @@ function HazardStackNavigator() {
               accessibilityRole="button"
               accessibilityLabel="Go to Home tab"
               hitSlop={10}
-              onPress={() => navigation.getParent()?.navigate('Home')}
+              onPress={() => navigation.getParent()?.navigate('HomeTab')}
               style={styles.headerBackButton}
             >
               <Ionicons name="arrow-back" size={24} color={colors.white} />
@@ -85,7 +87,7 @@ function ProfileStackNavigator() {
   return (
     <ProfileStack.Navigator screenOptions={stackScreenOptions}>
       <ProfileStack.Screen
-        name="Profile"
+        name="ProfileHome"
         component={ProfileScreen}
         options={{ headerShown: false }}
       />
@@ -116,6 +118,7 @@ function MessagesStackNavigator() {
 }
 
 function MainTabNavigator() {
+  const { t } = useTranslation();
   return (
     <Tab.Navigator
       tabBarPosition="bottom"
@@ -146,10 +149,10 @@ function MainTabNavigator() {
       }}
     >
       <Tab.Screen
-        name="Home"
+        name="HomeTab"
         component={HomeStackNavigator}
         options={{
-          tabBarLabel: 'Home',
+          tabBarLabel: t('tabs.home'),
           tabBarIcon: ({ color }) => (
             <Ionicons name="home" size={22} color={color} />
           ),
@@ -159,7 +162,7 @@ function MainTabNavigator() {
         name="Reels"
         component={HazardStackNavigator}
         options={{
-          tabBarLabel: 'Report Hazard',
+          tabBarLabel: t('tabs.reportHazard'),
           tabBarIcon: ({ color }) => (
             <Ionicons name="warning" size={22} color={color} />
           ),
@@ -169,17 +172,17 @@ function MainTabNavigator() {
         name="Messages"
         component={MessagesStackNavigator}
         options={{
-          tabBarLabel: 'Assigned Actions',
+          tabBarLabel: t('tabs.assignedActions'),
           tabBarIcon: ({ color }) => (
             <Ionicons name="clipboard-outline" size={22} color={color} />
           ),
         }}
       />
       <Tab.Screen
-        name="Profile"
+        name="ProfileTab"
         component={ProfileStackNavigator}
         options={{
-          tabBarLabel: 'Profile',
+          tabBarLabel: t('tabs.profile'),
           tabBarIcon: ({ color }) => (
             <Ionicons name="person" size={22} color={color} />
           ),
@@ -198,6 +201,14 @@ export default function AppNavigator() {
       setIsAuthenticated(hasSession);
       setIsLoading(false);
     });
+  }, []);
+
+  // Auto-logout when backend returns 401 (invalid/expired token)
+  useEffect(() => {
+    const unsub = authEvents.on('unauthorized', () => {
+      setIsAuthenticated(false);
+    });
+    return () => { unsub(); };
   }, []);
 
   if (isLoading) {

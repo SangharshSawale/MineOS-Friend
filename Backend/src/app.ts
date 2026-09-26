@@ -32,7 +32,12 @@ export const app = express();
 
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
-app.use(cors({ origin: env.corsOrigin }));
+app.use(
+  cors({
+    origin: env.corsOrigin === '*' ? true : env.corsOrigin,
+    credentials: true,
+  })
+);
 app.use("/uploads", express.static(path.resolve(__dirname, "../uploads")));
 app.get("/api/health", (_request, response) => response.json({ status: "ok", service: "mineos-backend", timestamp: new Date().toISOString() }));
 app.use("/api/auth", authRoutes);
